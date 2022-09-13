@@ -6,7 +6,7 @@ import Navigation from "./Navigation";
 const MainLayout = ({ children }) => {
   return (
     <Box
-      height="100vh"
+      minHeight="100vh"
       background="linear-gradient(.82deg,#0a0a36 61.99%,#171786 116.05%)"
     >
       <Box

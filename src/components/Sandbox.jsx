@@ -19,6 +19,7 @@ const Sandbox = ({ ...props }) => {
         showInlineErrors: true,
         wrapContent: true,
         editorHeight: 600,
+        editorWidthPercentage: 60,
       }}
       {...props}
     />

@@ -2,22 +2,7 @@ import React from "react";
 import { Box, Tabs, TabList, Tab, TabPanels, TabPanel } from "@chakra-ui/react";
 import Sandbox from "../components/Sandbox";
 
-const exerciseCode = `export default function App() {
-  let count = 0
-
-  function handleClick() {
-    count = count + 1
-  }
-  
-  return (
-    <div>
-      <h2>Count: {count}</h2>  
-      <button onClick={handleClick}>Increment</button>
-    </div>
-  )
-}`;
-
-const solutionCode = `import {useState} from 'react'
+const exerciseCode = `import {useState} from 'react'
 
 export default function App() {
   const [count, setCount] = useState(0)
@@ -34,7 +19,30 @@ export default function App() {
   )
 }`;
 
-const UseState = () => {
+const solutionCode = `import {useState,useEffect} from 'react'
+
+export default function App() {
+ const [count, setCount] = useState(
+    () => JSON.parse(window.localStorage.getItem("count")) ?? 0
+  );
+
+  useEffect(() => {
+    window.localStorage.setItem("count", JSON.stringify(count));
+  }, [count]);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={handleClick}>Increment</button>
+    </div>
+  );
+}`;
+
+const UseEffect = () => {
   return (
     <Box width="90%">
       <Tabs>
@@ -67,4 +75,4 @@ const UseState = () => {
   );
 };
 
-export default UseState;
+export default UseEffect;
